@@ -1,10 +1,20 @@
 import { Produto } from "../Model/Produto";
 import { ProdutoRepository } from "../Repository/ProdutoRepository";
+import { Camisa } from "../Model/Camisa";
+import { Bone } from "../Model/Bone";
 
 export class ProdutoController implements ProdutoRepository {
 
  private listaProdutos: Array<Produto> = new Array<Produto>();
  private id: number = 0;
+
+ constructor() {
+
+ this.cadastrar(new Camisa(this.gerarId(), "Camisa Corinthians Oficial", 299.90, 10, "G"));
+ this.cadastrar(new Camisa(this.gerarId(), "Camisa Corinthians Treino", 199.90, 8, "M"));
+ this.cadastrar(new Bone(this.gerarId(), "Bone Corinthians Preto", 89.90, 15, "Preto"));
+
+ }
 
  procurarPorId(id: number): void {
 
@@ -82,3 +92,4 @@ export class ProdutoController implements ProdutoRepository {
  }
 
 }
+
